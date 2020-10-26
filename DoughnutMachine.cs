@@ -20,29 +20,23 @@ namespace Dobie_Bianca_Carina_lab2
                 mFlavor = value;
             }
         }
-        private System.Collections.ArrayList mDoughnut = new System.Collections.ArrayList();
+        private System.Collections.ArrayList mDoughnuts = new System.Collections.ArrayList();
         public Doughnut this[int Index]
         {
             get
             {
-                return (Doughnut)mDoughnut[Index];
+                return (Doughnut)mDoughnuts[Index];
+
             }
             set
             {
-                mDoughnut[Index] = value;
+                mDoughnuts[Index] = value;
             }
         }
-
-
         public delegate void DoughnutCompleteDelegate();
         public event DoughnutCompleteDelegate DoughnutComplete;
         DispatcherTimer doughnutTimer;
-        private void doughnutTimer_Tick(object sender, EventArgs e)
-        {
-            Doughnut aDoughnut = new Doughnut(this.Flavor);
-            mDoughnut.Add(aDoughnut);
-            DoughnutComplete();
-        }
+
         private void InitializeComponent()
         {
             this.doughnutTimer = new DispatcherTimer();
@@ -51,6 +45,12 @@ namespace Dobie_Bianca_Carina_lab2
         public DoughnutMachine()
         {
             InitializeComponent();
+        }
+        private void doughnutTimer_Tick(object sender, EventArgs e)
+        {
+            Doughnut aDoughnut = new Doughnut(this.Flavor);
+            mDoughnuts.Add(aDoughnut);
+            DoughnutComplete();
         }
         public bool Enabled
         {
@@ -80,6 +80,7 @@ namespace Dobie_Bianca_Carina_lab2
             }
             doughnutTimer.Start();
         }
+
     }
     public enum DoughnutType
     {
@@ -89,10 +90,10 @@ namespace Dobie_Bianca_Carina_lab2
         Chocolate,
         Vanilla
     }
-
     class Doughnut
     {
         private DoughnutType mFlavor;
+
         public DoughnutType Flavor
         {
             get
@@ -123,13 +124,16 @@ namespace Dobie_Bianca_Carina_lab2
             {
                 return mTimeOfCreation;
             }
+
         }
-        public Doughnut(DoughnutType aFlavor)
+        public Doughnut(DoughnutType aFlavor) // constructor
         {
             mTimeOfCreation = DateTime.Now;
             mFlavor = aFlavor;
         }
     }
+
+
 }
 
 
