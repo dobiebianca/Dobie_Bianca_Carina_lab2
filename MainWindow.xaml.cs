@@ -58,7 +58,6 @@ namespace Dobie_Bianca_Carina_lab2
         private DoughnutMachine myDoughnutMachine;
         private int mRaisedGlazed;
         private int mRaisedSugar;
-
         private int mFilledLemon;
         private int mFilledChocolate;
         private int mFilledVanilla;
